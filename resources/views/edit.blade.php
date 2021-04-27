@@ -10,12 +10,19 @@
     
     <body>
         <h1>Blog Name</h1>
-        <p class="edit">[<a href="/posts/{{ $post->id }}/edit">edit</a>]</p>
-            <div class='post'>
-                  <h2 class='title'>{{ $post->title }}</h2>
-                  <p class='body'>{{ $post->body }}</p>
-                  <p class='updated_at'>{{ $post->updated_at }}</p>
-            </div>
+        
+            <form action="/posts" method="POST">
+              @csrf
+              <div class="title">
+                <h2>Title</h2>
+                <input type="text" name="post[title]" placeholder="タイトル"/>
+              </div>
+              <div class="body">
+                <h2>Body</h2>
+                <textarea name="post[body]" placeholder="今日も1日お疲れさまでした。"></textarea>
+              </div>
+              <input type="submit" value="保存"/>
+            </form>
             <div class="back">
                 [ <a href="/">back</a>]
             </div>
